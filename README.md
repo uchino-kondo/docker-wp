@@ -325,25 +325,26 @@ npx wp-env run cli -- wp rewrite flush
 ## 新しいプロジェクト（案件）を作るとき
 
 このリポジトリは GitHub の **テンプレートリポジトリ** として運用する。
+テンプレートリポジトリ: https://github.com/uchino-kondo/docker-wp
 
 ### 1. GitHub で新しいリポジトリを作成
 
-1. GitHub のテンプレートリポジトリページを開く
+1. https://github.com/uchino-kondo/docker-wp を開く
 2. 「**Use this template**」→「**Create a new repository**」をクリック
-3. リポジトリ名を案件名にする（例: `20260301_wp_ohtsuya`）
+3. リポジトリ名を案件名にする（例: `20260301_wp_testsite`）
 4. 「Create repository」で作成
 
 ### 2. ローカルに clone
 
 ```bash
 cd ~/MyDocumet/project
-git clone git@github.com:yourname/20260301_wp_ohtsuya.git
-cd 20260301_wp_ohtsuya
+git clone git@github.com:uchino-kondo/20260301_wp_testsite.git
+cd 20260301_wp_testsite
 ```
 
 ### 3. テーマ名を一括置換
 
-Cursor で開き、「`themesName` を `ohtsuya` に一括置換して」と依頼する。
+Cursor で開き、「`themesName` を `testsite` に一括置換して」と依頼する。
 
 変更対象:
 - `themes/themesName` → フォルダ名リネーム
@@ -354,7 +355,6 @@ Cursor で開き、「`themesName` を `ohtsuya` に一括置換して」と依�
 - `themes/新テーマ名/style.css` → `Theme Name:`
 - `scripts/tinypng.js` → `DEST_DIR` のパス
 - `scripts/setup-wp.sh` → `wp theme activate` のテーマ名
-- `.cursor/rules/base-cording-rules.mdc` → プロジェクト情報
 
 ### 4. セットアップ
 
