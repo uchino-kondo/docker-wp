@@ -1,0 +1,98 @@
+@use "global/index" as *;
+
+html {
+  //~375px
+  @media (max-width: 374.9px) {
+    font-size: calc(10 / 375 * 100vw);
+  }
+
+  // 375px~767px
+  @media screen and (min-width: 375px) {
+    font-size: 10px;
+  }
+
+
+  // 768px~inner
+	@include mq(md) {
+    font-size: min(calc(8px + 4*(100vw - 768px) / 598), 10px);
+	}
+
+  // inner~max-screen
+  @media (min-width: $inner) {
+    font-size: 10px;
+  }
+}
+
+body {
+  font-family: $baseFont;
+  color: $black;
+  @include f_around(16, $medium, 24, false);
+  @include mq(md) {
+    color: $black;
+  }
+}
+
+main {
+  margin-top: rem(60);
+  @include mq(md) {
+    margin-top: rem(120);
+  }
+}
+
+// footerを画面下部に固定
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  @include mq(md) {
+    overflow-x: visible;
+  }
+}
+.footer {
+  margin-top: auto;
+}
+
+// hover
+a {
+  text-decoration: none;
+  color: inherit;
+  @include mq(md) {
+    transition: opacity 0.3s;
+  }
+}
+@media (any-hover: hover) {
+  a:hover {
+    opacity: $opacity;
+  }
+}
+
+a,span {
+  display: inline-block;
+}
+
+// pcの電話番号発信対応
+a[href^="tel:"] {
+  @include mq(md) {
+    pointer-events: none;
+  }
+}
+
+article > * + * {
+  margin-top: 2em;
+}
+
+// デスクトップサイズのみ表示
+.pc-only {
+  display: none;
+  @include mq(md) {
+    display: block;
+  }
+}
+
+// モバイルサイズのみ表示
+.sp-only {
+  @include mq(md) {
+    display: none;
+  }
+}

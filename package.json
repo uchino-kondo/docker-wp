@@ -1,0 +1,33 @@
+{
+  "name": "docker-wp",
+  "version": "1.0.0",
+  "description": "WordPress テーマ開発環境（wp-env + Vite）",
+  "type": "module",
+  "scripts": {
+    "start": "wp-env start",
+    "stop": "wp-env stop",
+    "dev": "touch themes/themesName/.vite-running && vite; rm -f themes/themesName/.vite-running",
+    "build": "vite build",
+    "img": "node scripts/tinypng.js",
+    "img:copy": "node scripts/tinypng.js --copy-only"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "not dead"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/env": "^10.0.0",
+    "autoprefixer": "^10.4.20",
+    "dotenv": "^16.4.7",
+    "glob": "^11.0.0",
+    "postcss": "^8.4.49",
+    "sass": "^1.83.0",
+    "tinify": "^1.7.1",
+    "vite": "^6.0.7",
+    "vite-plugin-live-reload": "^3.0.3"
+  }
+}

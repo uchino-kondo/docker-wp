@@ -1,0 +1,94 @@
+@use "sass:math";
+@use "sass:map";
+
+//z-index
+$gnav: 200;
+$gnavLogo: 210;
+$hamBtn: 210;
+$toTopBtn: 190;
+
+
+// inner
+$inner: 1366px;
+$narrowInner: 1000px;
+$minInner: 480px;
+
+
+// 余白
+$paddingPc: 24px;
+$paddingSp: 20px;
+
+
+// font-family
+$baseFont: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP",  sans-serif;
+
+
+//font-weight
+$thin: 300;
+$normal: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+
+
+// opacity
+$opacity: 0.7;
+
+
+// 汎用色
+$mainColor: #F2F2F2;
+$subColor: #221816;
+$accentColor: #333333;
+$white: #FFF;
+$black: #000;
+$black01: #221816;
+$gray01: #F5F5F5;
+$gray02: #838383;
+$gray03: #D9D9D9;
+$gray04: #F7F5E8;
+
+
+//ブレイクポイント
+$breakpoints: (
+  sm: 480,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  xxl: 1366,
+  xxxl: 1440,
+  );
+
+
+//メディアクエリー
+$mediaquerys: (
+  sm: "screen and (min-width: #{map.get($breakpoints,'sm')}px)",
+  md: "screen and (min-width: #{map.get($breakpoints,'md')}px)",
+  lg: "screen and (min-width: #{map.get($breakpoints,'lg')}px)",
+  xl: "screen and (min-width: #{map.get($breakpoints,'xl')}px)",
+  xxl: "screen and (min-width: #{map.get($breakpoints,'xxl')}px)",
+  xxxl: "screen and (min-width: #{map.get($breakpoints,'xxxl')}px)",
+);
+
+
+// @include mq(){}で書くとブレークポイントが反映される（初期値はmd）
+@mixin mq($mediaquery: md) {
+  @media #{map.get($mediaquerys, $mediaquery)} {
+    @content;
+  }
+}
+
+
+// ex font_around only_num
+@mixin f_around($pixels, $weight: false, $height: false, $spacing: false) {
+	font-size: math.div($pixels, 10) * 1rem;
+	@if $weight {
+		font-weight: $weight;
+	}
+	@if $height {
+		line-height: math.div($height,$pixels);
+	}
+	@if $spacing {
+		letter-spacing: math.div($spacing, 1000) * 1em;
+	}
+}
+// ＠include f_around(font-size, font-weight , line-height, letter-spacing)
