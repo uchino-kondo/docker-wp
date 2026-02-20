@@ -1,1 +1,210 @@
-// header
+@use "global/index" as *;
+
+.header {
+  background-color: $white;
+  // background-color: red;
+  background-color: transparent;
+  width: 100%;
+  height: rem(60);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $gnav;
+  transition: background-color .3s ease-in 0s;
+  @include mq(md){
+    height: rem(120);
+    padding: 0;
+    border-bottom: none;
+  }
+}
+
+.header.up {
+  animation: upAnime 0.5s forwards;
+}
+@keyframes upAnime {
+  from {
+  opacity: 1;
+	transform: translateY(0);
+  }
+  to {
+  opacity: 0;
+	transform: translateY(-100px);
+  }
+}
+
+.header.down {
+	animation: downAnime 0.5s forwards;
+}
+@keyframes downAnime{
+  from {
+  opacity: 0;
+	transform: translateY(-100px);
+  }
+  to {
+  opacity: 1;
+	transform: translateY(0);
+  }
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 rem(15);
+  @include mq(md){
+    padding: rem(15) 0 rem(15) rem(30);
+    justify-content: flex-start;
+  }
+}
+
+.header__logo {
+  width: rem(79);
+  overflow: hidden;
+  @include mq(md){
+    width: rem(119);
+  }
+}
+
+.header__logo:hover {
+  @include mq(md) {
+    opacity: $opacity;
+  }
+}
+
+.header__logo img {
+  aspect-ratio: 79/60;
+  object-fit: cover;
+  @include mq(md) {
+    aspect-ratio: 119/90;
+  }
+}
+
+// header__nav
+.header__nav {
+  display: none;
+  @include mq(md){
+    display: flex;
+    align-items: center;
+    height: inherit;
+    justify-content: space-between;
+  }
+  @include mq(xl) {
+    margin-left: rem(30);
+  }
+}
+
+.header__nav-item {
+  @include mq(md) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.header__link  {
+  @include mq(md) {
+    position: relative;
+    margin-left: rem(24);
+  }
+  @include mq(xl) {
+    margin-left: rem(30);
+  }
+}
+
+.header__link span,
+.header__link a {
+  @include mq(md) {
+    display: inline-block;
+    color: $black;
+    @include f_around(16, $bold, 21.8, false);
+    line-height: 1;
+    position: relative;
+    cursor: pointer;
+  }
+}
+
+.header__link a::after {
+  @include mq(md) {
+    content: "";
+    display: block;
+    width: 100%;
+    height: rem(2);
+    position: absolute;
+    bottom: rem(-10);
+    left: 0;
+    transform: scale(0, 1);
+    transform-origin: left top;
+    background-color: $black;
+    transition: all .3s;
+  }
+}
+
+.header__link a:hover {
+  @include mq(md) {
+    opacity: 1;
+  }
+}
+
+.header__link a:hover::after {
+  @include mq(md) {
+    transform: scale(1, 1);
+  }
+}
+
+.header__linkChild {
+  @include mq(md) {
+    border-radius: rem(15);
+    overflow: hidden;
+    width: rem(300);
+    position: absolute;
+    top: rem(35);
+    left: 0;
+    visibility: hidden;
+    z-index: 2;
+    opacity: 0;
+    transition: all .5s;
+  }
+  @include mq(lg) {
+    width: rem(250);
+  }
+}
+
+.header__link span:hover + .header__linkChild,
+.header__linkChild:hover {
+  @include mq(md){
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.header__linkItem {
+  @include mq(md) {
+    line-height: 1;
+  }
+}
+
+.header__linkItem + .header__linkItem {
+  @include mq(md) {
+    border: 1px solid $white;
+  }
+}
+
+.header__linkItem span,
+.header__linkItem a {
+  @include mq(md) {
+    display: block;
+    background-color: $black;
+    color: $white;
+    padding: rem(17) rem(15);
+    width: 100%;
+    @include f_around(12, $normal, 12, false);
+  }
+}
+
+.header__linkItem span:hover,
+.header__linkItem a:hover {
+  @include mq(md) {
+    opacity: $opacity;
+  }
+}

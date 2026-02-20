@@ -1,1 +1,364 @@
-// single-content
+@use "global/index" as *;
+
+/*-------------------------------
+single-content default
+-------------------------------*/
+
+//margin
+//複数画像
+.wp-block-gallery,
+//media
+.wp-block-media-text,
+//tableWrapper
+.wp-block-table {
+  margin-top: rem(40);
+  @include mq(md) {
+    margin-top: rem(60);
+  }
+}
+
+.single-content table {
+  margin-top: rem(40);
+  @include mq(md) {
+    margin-top: rem(60);
+  }
+}
+
+.wp-block-table table {
+  border: rem(2) solid $gray01;
+  border-collapse: collapse;
+  overflow-x: scroll;
+  @include mq(md) {
+    overflow-x: auto;
+    margin-inline: auto;
+  }
+}
+
+.single-content table caption,
+.wp-block-table table caption {
+  font-size: rem(24);
+  margin-top: rem(24);
+  text-align: center;
+}
+
+.single-content table th,
+.single-content table td,
+.wp-block-table table th,
+.wp-block-table table td {
+  border: rem(1) solid $gray01;
+}
+
+.single-content table thead,
+.wp-block-table table thead {
+  border-bottom: rem(2) solid $gray01;
+}
+
+.single-content table thead th,
+.single-content table thead td,
+.wp-block-table table thead th,
+.wp-block-table table thead td {
+  padding: rem(6) rem(8);
+}
+
+.single-content table thead th:first-child,
+.wp-block-table table thead th:first-child {
+  width: rem(96);
+}
+
+.single-content table thead th:nth-child(2),
+.wp-block-table table thead th:nth-child(2) {
+  width: rem(96);
+}
+
+.single-content table tbody th,
+.single-content table tbody td,
+.wp-block-table table tbody th,
+.wp-block-table table tbody td {
+  padding: rem(4) rem(8);
+}
+
+.single-content table tbody tr:nth-child(even),
+.wp-block-table table tbody tr:nth-child(even) {
+  background-color: $gray01;
+}
+
+//引用
+.single-content blockquote,
+.wp-block-quote,
+.wp-block-pullquote blockquote {
+  background-color: $gray01;
+  padding: rem(40) rem(46) rem(30) rem(40);
+  margin-top: rem(50);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  @include mq(md) {
+    margin-top: rem(40);
+    padding: rem(25) rem(46) rem(17) rem(67);
+  }
+}
+
+.single-content blockquote::before,
+.wp-block-quote::before,
+.wp-block-pullquote blockquote::before {
+  content: "“";
+  color: $gray02;
+  font-size: rem(90);
+  position: absolute;
+  top: rem(-20);
+  left: rem(14);
+  @include mq(xxl) {
+    font-size: rem(90);
+  }
+}
+
+.single-content blockquote p,
+.wp-block-quote p,
+.wp-block-pullquote blockquote p {
+  padding-top: rem(16);
+  margin-top: 0;
+  font-size: rem(16);
+}
+
+.wp-block-quote p:first-of-type,
+.wp-block-pullquote blockquote p:first-of-type {
+  padding-top: unset;
+}
+
+.single-content cite,
+.single-content blockquote cite,
+.wp-block-quote cite,
+.wp-block-pullquote blockquote cite {
+  margin-top: rem(10);
+  font-size: rem(16);
+  text-align: right;
+  @include mq(md) {
+    margin-top: rem(20);
+  }
+}
+
+.wp-block-pullquote blockquote {
+  margin-top: 0;
+}
+
+//figure
+.wp-block-image {
+  max-width: 100%;
+  height: auto;
+  margin: rem(50) auto 0;
+  @include mq(md) {
+    margin-top: rem(50);
+  }
+}
+
+//各caption(figure, table)
+.wp-element-caption {
+  font-size: rem(16);
+  font-weight: $bold;
+  text-align: center;
+  @include mq(md) {
+    font-size: rem(18);
+  }
+}
+
+.single-content figure {
+  margin-top: rem(50);
+  width: 100% !important;
+}
+
+.single-content figcaption {
+  margin-top: rem(10);
+}
+
+.single-content img {
+  width: fit-content;
+}
+
+.single-content p img {
+  max-width: 100%;
+  height: auto;
+}
+
+.single-content h2 {
+  padding: rem(20) rem(25);
+  @include f_around(20, $bold, 32, false);
+  margin-top: rem(60);
+  background-color: $gray01;
+  border-radius: rem(30);
+  @include mq(md) {
+    font-size: rem(30);
+    padding: rem(30) rem(25);
+  }
+}
+
+.single-content h3 {
+  padding: rem(20) 0;
+  @include f_around(18, $bold, 30, false);
+  margin-top: rem(60);
+  border-bottom: rem(2) solid $black;
+  @include mq(md) {
+    @include f_around(20, $bold, 26, false);
+  }
+}
+
+.single-content h4 {
+  @include f_around(17, $bold, 28, false);
+  font-weight: $bold;
+  margin-top: rem(60);
+  border-left: rem(4) solid $black;
+  padding-left: rem(16);
+  @include mq(md){
+    @include f_around(18, $bold, 30, false);
+  }
+}
+
+// .single-content h5 {
+//   font-size: rem(18);
+//   font-weight: $bold;
+//   line-height: 1.35;
+//   letter-spacing: .03em;
+//   padding-left: rem(14);
+//   margin-top: rem(50);
+//   margin-bottom: 0;
+//   position: relative;
+// }
+
+// .single-content h5::after {
+//   content: "";
+//   display: inline-block;
+//   background-color: transparent;
+//   position: absolute;
+//   width: 0;
+//   height: 0;
+//   border-radius: 0;
+//   border-style: solid;
+//   border-width: 4px 0 4px 6px;
+//   border-color: transparent transparent transparent $gray01;
+//   top: rem(10);
+//   left: rem(-2);
+// }
+
+// .single-content h6 {
+//   font-size: rem(17);
+//   font-weight: $bold;
+//   line-height: 1.35;
+//   letter-spacing: .03em;
+//   padding-left: rem(14);
+//   margin-top: rem(50);
+//   margin-bottom: 0;
+//   position: relative;
+// }
+
+// .single-content h6::after {
+//   content: "";
+//   display: block;
+//   width: rem(6);
+//   height: rem(6);
+//   background-color: $gray01;
+//   position: absolute;
+//   top: rem(10);
+//   left: rem(-2);
+// }
+
+.single-content p {
+  margin-top: rem(20);
+  @include f_around(16, $medium, 26, false);
+  font-family: $baseFont;
+  @include mq(md) {
+    margin-top: rem(26);
+  }
+}
+
+.single-content mark.has-inline-color {
+// .is-style-text-highlight mark.has-inline-color {
+  background: linear-gradient(180deg, transparent 0%, transparent 50%, $gray01 50%, $gray01 100%) !important;
+}
+
+.single-content p + p {
+  margin-top: rem(20);
+  @include mq(md) {
+    margin-top: rem(20);
+  }
+}
+
+.single-content p:first-child {
+  margin-top: 0;
+}
+
+.single-content dd,
+.single-content dt {
+  padding: rem(8) rem(16);
+}
+
+.single-content dt {
+  margin-top: rem(24);
+  border-left: rem(2) solid $gray01;
+}
+
+.single-content dd {
+  padding-left: rem(34);
+}
+
+.single-content ol {
+  counter-reset: ol;
+
+}
+
+.single-content ul ,
+.single-content ol  {
+  list-style-type: none;
+  padding-left: rem(20);
+  margin-top: rem(40);
+  line-height: 1.5;
+  @include mq(md) {
+    margin-top: rem(50);
+  }
+}
+
+.single-content ul ul,
+.single-content ol ol {
+  margin-top: rem(8);
+}
+
+.single-content ul li,
+.single-content ol li {
+  margin-top: rem(20);
+}
+
+.single-content ol li {
+  padding-left: rem(20);
+}
+
+.single-content ul > li {
+  position: relative;
+}
+
+.single-content ul > li::before {
+  content: "";
+  display: block;
+  width: rem(4);
+  height: rem(4);
+  background-color: $black;
+  border-radius: 50%;
+  position: absolute;
+  top: rem(12);
+  left: rem(-10);
+}
+
+.single-content ul li ul > li {
+  position: relative;
+  text-decoration: none;
+}
+
+.single-content a {
+  text-decoration: underline;
+}
+
+.single-content address {
+  margin-top: rem(30);
+}
+
+.single-content strong {
+  font-weight: $bold;
+}

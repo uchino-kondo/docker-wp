@@ -21,7 +21,7 @@
 <?php $html_tag = (is_home() || is_front_page()) ? 'h1' : 'p'; ?>
 <<?php echo $html_tag; ?> class="header__logo">
   <a href="<?php echo esc_url(home_url('/')); ?>">
-    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/common/logo.svg" alt="">
+    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/common/logo.png" alt="">
   </a>
 </<?php echo $html_tag; ?>>
 <!-- /.header__logo -->

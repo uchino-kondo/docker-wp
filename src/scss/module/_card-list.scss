@@ -1,1 +1,21 @@
-// card-list
+@use "global/index" as *;
+
+.card-list {
+  display: grid;
+  width: 90%;
+  max-width: rem(400);
+  margin-inline: auto;
+  @include mq(md) {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.card-list._col3 {
+  grid-template-columns: repeat(1, 1fr);
+  gap: rem(18);
+  @include mq(md) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: rem(24);
+  }
+}

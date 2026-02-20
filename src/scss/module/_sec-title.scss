@@ -1,1 +1,52 @@
-// sec-title
+@use "global/index" as *;
+
+.section-title {
+  text-transform: capitalize;
+  color: $black;
+  @include mq(md){
+
+  }
+}
+
+// .section-title._top {
+//   @include f_around(30, $bold, 76, false);
+//   @include mq(md) {
+//     @include f_around(40, $bold, 52, false);
+//   }
+// }
+
+// .topMv__heading .section-title._top {
+
+//   @include mq(md) {
+//     @include f_around(74, $bold, 60, false);
+
+//   }
+// }
+
+.section-title._lead {
+  @include f_around(14, $bold, 14, false);
+  margin-top: rem(30);
+  @include mq(md) {
+    margin-top: rem(45);
+    @include f_around(16, $bold, 16, false);
+  }
+}
+
+// .topMv__heading .section-title._lead span {
+//   display: inline;
+//   @include mq(md) {
+//     display: inline-block;
+//   }
+// }
+
+// .topMv__heading .section-title._lead {
+//   @include f_around(15.2, $bold, 30, false);
+//   margin-top: rem(30);
+//   @media (min-width: 378px) {
+//     @include f_around(16, $bold, 30, false);
+//   }
+//   @include mq(md) {
+//     margin-top: rem(60);
+//     font-size: rem(18);
+//   }
+// }

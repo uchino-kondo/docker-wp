@@ -1,1 +1,30 @@
-// blog
+@use "global/index"as *;
+
+.blog {
+  @include mq(md) {
+    overflow: hidden;
+  }
+}
+
+.blog__mv {
+  text-align: center;
+  @include mq(md) {
+  }
+}
+
+.blog__text {
+  text-align: center;
+  max-width: rem(588);
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  @include mq(md) {
+
+  }
+}
+
+.blog__text span {
+  @include f_around(14, $medium, 24, false);
+}
+
+

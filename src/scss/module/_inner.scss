@@ -1,1 +1,19 @@
-// inner
+@use "global/index" as *;
+
+.inner {
+  max-width: $minInner + $paddingSp * 2;
+  width: 100%;
+  padding-inline: $paddingSp;
+  margin-inline: auto;
+  @include mq(md) {
+    max-width: $inner + $paddingPc * 2;
+    padding-inline: $paddingPc;
+  }
+}
+
+.inner._narrow {
+  max-width: $minInner + $paddingSp * 2;
+  @include mq(md) {
+    max-width: $narrowInner + $paddingPc * 2 ;
+  }
+}

@@ -38,7 +38,10 @@
   wp_reset_postdata();
 ?>
 
-<?php get_template_part('includes/pagenation'); ?>
+<div class="pagenation-wrap">
+  <?php include(locate_template('includes/pagenation.php')); ?>
+</div>
+<!-- /.pagenation-wrap -->
 
 </div>
 <!-- /.inner -->

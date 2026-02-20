@@ -30,7 +30,7 @@ function Change_menulabel()
 {
   global $menu;
   global $submenu;
-  $name = 'News';
+  $name = 'お知らせ';
   $menu[5][0] = $name;
   $submenu['edit.php'][5][0] = $name . '一覧';
   $submenu['edit.php'][10][0] = '新しい' . $name;
@@ -41,7 +41,7 @@ function Change_menulabel()
 function Change_objectlabel()
 {
   global $wp_post_types;
-  $name = 'News';
+  $name = 'お知らせ';
   $labels = &$wp_post_types['post']->labels;
   $labels->name = $name;
   $labels->singular_name = $name;
@@ -64,10 +64,11 @@ function sort_side_menu($menu_order)
 {
   return array(
     "index.php",
-    "edit.php",
+    "edit.php", // 投稿
+    "edit.php?post_type=column", // カスタム投稿コラム
     "separator1",
-    "edit.php?post_type=page",
-    "upload.php",
+    "edit.php?post_type=page", // 固定ページ
+    "upload.php",// メディア
     "edit-comments.php",
     "separator2",
     "themes.php",
@@ -185,16 +186,12 @@ function my_script_init()
   // wp_enqueue_script('scrollTrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js', array('gsap'), '3.9.1');
 
   if (is_vite_dev_mode()) {
-    // 開発モード: Vite開発サーバーから読み込み（プロキシ経由）
-    wp_enqueue_script('vite-client', '/@vite/client', array(), null);
-    wp_enqueue_script('common', '/src/js/common.js', array(), null);
-
-    add_filter('script_loader_tag', function ($tag, $handle, $src) {
-      if (in_array($handle, ['vite-client', 'common'])) {
-        return '<script type="module" src="' . esc_url($src) . '"></script>';
-      }
-      return $tag;
-    }, 10, 3);
+    // 開発モード: Vite開発サーバーから直接読み込み
+    // wp_enqueue_script だと WordPress が site_url() を付与して CORS エラーになるため直接出力
+    add_action('wp_head', function () {
+      echo '<script type="module" src="/@vite/client"></script>' . "\n";
+      echo '<script type="module" src="/src/js/common.js"></script>' . "\n";
+    }, 99);
   } else {
     // 本番モード: ビルド済みファイルを読み込み
     $manifest = get_vite_manifest();
@@ -202,23 +199,23 @@ function my_script_init()
     if ($manifest) {
       if (isset($manifest['src/scss/style.scss']['css'])) {
         foreach ($manifest['src/scss/style.scss']['css'] as $css_file) {
-          wp_enqueue_style('style', get_template_directory_uri() . '/dist/' . $css_file, array(), $latest_ver);
+          wp_enqueue_style('theme-style', get_template_directory_uri() . '/dist/' . $css_file, array(), $latest_ver);
         }
       }
 
       if (isset($manifest['src/js/common.js']['file'])) {
-        wp_enqueue_script('common', get_template_directory_uri() . '/dist/' . $manifest['src/js/common.js']['file'], array(), $latest_ver, true);
+        wp_enqueue_script('theme-common', get_template_directory_uri() . '/dist/' . $manifest['src/js/common.js']['file'], array(), $latest_ver, true);
 
         add_filter('script_loader_tag', function ($tag, $handle, $src) {
-          if ($handle === 'common') {
+          if ($handle === 'theme-common') {
             return '<script type="module" src="' . esc_url($src) . '"></script>';
           }
           return $tag;
         }, 10, 3);
       }
     } else {
-      wp_enqueue_style('style', get_template_directory_uri() . '/dist/css/style.css', array(), $latest_ver);
-      wp_enqueue_script('common', get_template_directory_uri() . '/dist/js/common.js', array(), $latest_ver, true);
+      wp_enqueue_style('theme-style', get_template_directory_uri() . '/dist/css/style.css', array(), $latest_ver);
+      wp_enqueue_script('theme-common', get_template_directory_uri() . '/dist/js/common.js', array(), $latest_ver, true);
     }
   }
 }

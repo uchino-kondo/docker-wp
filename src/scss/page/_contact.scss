@@ -1,1 +1,59 @@
-// contact
+@use "global/index"as *;
+
+.contact {
+  @include mq(md) {
+    overflow: hidden;
+  }
+}
+
+.contact__mv {
+  text-align: center;
+  @include mq(md) {
+  }
+}
+@media (any-hover: hover) {
+  .contact__mv:hover {
+    opacity: 0.8;
+  }
+}
+
+.contact__text {
+  text-align: center;
+  max-width: rem(588);
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  @include mq(md) {
+
+  }
+}
+
+.contact__text span {
+  @include f_around(14, $medium, 24, false);
+}
+
+
+// Thanks-page
+.contact__thanksWrap {
+  text-align: center;
+}
+
+.contact__thanks {
+  @include f_around(18, $bold, 32, false);
+}
+
+.contact__thanksBtn {
+  margin-top: rem(90);
+}
+
+.contact__thanks {
+  font-size: rem(24);
+  font-weight: 700;
+  line-height: 1.7777777778;
+  margin-bottom: rem(45);
+}
+
+.sh-contact__text {
+  font-size: rem(16);
+  line-height: 1.7777777778;
+}

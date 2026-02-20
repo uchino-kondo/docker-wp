@@ -7,6 +7,19 @@ echo "========================================="
 echo " WordPress 初期設定"
 echo "========================================="
 
+# ── WordPress インストール確認 ──
+# DB が空の場合（ボリューム削除後など）に自動インストールする
+if ! npx wp-env run cli -- wp core is-installed 2>/dev/null; then
+  echo "▶ WordPress をインストール中..."
+  npx wp-env run cli -- wp core install \
+    --url="http://localhost:8888" \
+    --title="Development Site" \
+    --admin_user=admin \
+    --admin_password=password \
+    --admin_email=admin@example.com \
+    --skip-email
+fi
+
 # ── 言語設定 ──
 echo "▶ 日本語化..."
 npx wp-env run cli -- wp language core install ja 2>/dev/null

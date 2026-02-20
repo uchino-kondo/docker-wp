@@ -1,1 +1,241 @@
-// form
+@use "global/index" as *;
+
+.form {
+  width: 100%;
+  max-width: rem(588);
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 rem(20);
+  @include mq(md) {
+    padding: 0 rem(30);
+  }
+}
+
+.contact .form {
+  padding: 0;
+  @include mq(md) {
+    padding: 0 rem(30);
+  }
+
+}
+
+.form__caution  {
+  max-width: rem(527);
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.form__caution._1  {
+  text-align: center;
+  @include f_around(14, $medium, 24, false);
+  @include mq(md) {
+    @include f_around(16, $medium, 26, false);
+  }
+}
+
+.form__caution._2  {
+  text-align: left;
+  margin-top: rem(33);
+  @include f_around(14, $medium, 24, false);
+}
+
+.form__caution span {
+  display: inline;
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.form__item {
+  width: 100%;
+  max-width: rem(527);
+  margin: rem(43) auto 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  @include mq(md) {
+  }
+}
+
+.form__item:first-of-type {
+  margin-top: rem(30);
+}
+
+.form__header {
+  width: 100%;
+  @include f_around(16, $bold, 21.8, false);
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: rem(15);
+  @include mq(md){
+  }
+}
+
+// varidation
+.form__any,
+.form__required {
+  @include f_around(12, $bold, false, false);
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: rem(5) rem(10) rem(5);
+  color: $white;
+  border-radius: rem(3);
+}
+.form__required {
+  background-color: $black;
+}
+.form__any {
+  background-color: $gray01;
+}
+
+.form__headerName {
+  margin-left: rem(15);
+}
+
+.form__body span {
+  width: 100%;
+}
+
+.form__bodyText,
+.form__bodyTextarea {
+  display: block;
+  width: 100%;
+  font-size: rem(16);
+  background-color: $white;
+  padding: rem(10) rem(8);
+  border: 1px solid $black;
+  border-radius: rem(10);
+  margin-top: rem(15);
+  @include mq(md) {
+    margin: rem(15) auto 0;
+    padding: rem(10) rem(14);
+  }
+}
+
+.form__bodyText::placeholder,
+.form__bodyTextarea::placeholder {
+  @include f_around(16, $medium, 21.8, false);
+  color: #A7A7A7;
+}
+
+.form__bodyTextarea {
+  padding: rem(15);
+  height: rem(180);
+  @include mq(md) {
+    padding: rem(17) rem(16) rem(18);
+  }
+}
+
+// 送信ボタン
+.form__btn {
+  margin: rem(45) auto 0;
+  text-align: center;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  width: rem(140);
+  @include mq(md){
+  }
+}
+
+.resourcesDetail__form .form__btn {
+  width: rem(208);
+}
+
+.form__btnSubmit {
+  color: $white;
+  background-color: $black;
+  @include f_around(16, $bold, 16, 83);
+  display: inline-block;
+  text-align: center;
+  border: rem(3) solid $black;
+  border-radius: rem(10);
+  padding: rem(20) rem(20);
+  @include mq(md) {
+    transition: color, background-color .3S ease-in;
+  }
+}
+
+.form__btnSubmit:hover {
+  @include mq(md) {
+    color: $black;
+    background-color: $gray01;
+    border-color: transparent;
+    opacity: 1;
+  }
+}
+
+// radio
+.form__bodyRadio {
+  @include f_around(16, $medium, 21.8, false);
+}
+
+.wpcf7-list-item {
+  display: block;
+  margin-left: 0;
+  margin-top: rem(15);
+}
+
+.wpcf7-list-item-label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+}
+
+// チェック前のボタン
+.wpcf7-list-item-label::before {
+  border: 1px solid $black;
+  border-radius: rem(30);
+  line-height: 1;
+  display: block;
+  flex-shrink: 0;
+  content: "";
+  height: 1em;
+  margin-right: rem(10);
+  transition: background-color .3s; // 色をじんわり変化させる
+  width: 1em;
+}
+
+// チェック後のボタン
+input[type="radio"]:checked + .wpcf7-list-item-label::before {
+  background-color: $black; // チェック後の中心の色
+  box-shadow: inset 0 0 0 3px $white; // 中心の色のスタイル
+}
+
+
+// メッセージ機能をoff
+// .wpcf7-response-output {
+//   display: none;
+// }
+
+.form__privacy {
+  margin-top: rem(45);
+  @include f_around(14, $medium, 24, false);
+}
+
+.form__privacy a {
+  text-decoration: underline;
+  @include mq(md) {
+    transition: opacity .3s ease-in 0s;
+  }
+}
+
+.form__privacy a:hover {
+  @include mq(md) {
+    opacity: $opacity;
+  }
+}
+
+.wpcf7-spinner {
+  display: block;
+}

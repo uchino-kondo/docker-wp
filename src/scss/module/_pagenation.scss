@@ -1,1 +1,340 @@
-// pagenation
+@use "global/index" as *;
+
+.pagenation-wrap {
+  width: fit-content;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+
+.pagenation {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: rem(6);
+  justify-content: center;
+  @include mq(md) {
+    gap: rem(10);
+  }
+}
+
+
+/* ------------------------------
+  一覧
+------------------------------ */
+
+.pagenation .page,
+.pagenation .last,
+.pagenation .first,
+.pagenation .previous-postslink,
+.pagenation .next-postslink,
+.pagenation span.current,
+.pagenation .back-blog,
+.pagenation .page.smaller,
+.pagenation .page.larger {
+  background-color: $white;
+  transition: all .3s ease-in 0s;
+  @include f_around(16, $bold, 23, false);
+  width: rem(62);
+  height: rem(62);
+  color: $black;
+  border: rem(2) solid $black;
+  border-radius: rem(10);
+  text-decoration: none;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: rem(2) rem(4) rem(2);
+
+  @include mq(md) {
+    &:hover {
+      background-color: $gray01;
+      color: $black;
+      border-color: $gray01;
+      opacity: 1;
+    }
+  }
+}
+
+// .pagenation .first,
+// .pagenation .last {
+//   display: none;
+//   @include mq(md) {
+//     display: inline-flex;
+//     align-items: center;
+//     justify-content: center;
+//     }
+// }
+
+.pagenation .next-postslink,
+.pagenation .previous-postslink,
+.pagenation span.current {
+  background-color: $black;
+  color: $white;
+  position: relative;
+}
+
+.pagenation .next-postslink::after,
+.pagenation .previous-postslink::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include mq(md) {
+    transition: all .3s ease-in 0s;
+  }
+}
+
+
+.pagenation .previous-postslink::before {
+  border-width: rem(7) rem(12) rem(6) 0;
+  border-color: transparent #ffffff transparent transparent;
+  margin-right: rem(2);
+  transform: translate(-50%, -40%);
+  @include mq(md) {
+    transition: all .3s ease-in 0s;
+  }
+}
+
+.pagenation .previous-postslink:hover::before {
+  @include mq(md) {
+    border-color: transparent $black transparent transparent;
+  }
+}
+
+.pagenation .next-postslink::after {
+  border-width: rem(7) 0 rem(7) rem(12);
+  border-color: transparent transparent transparent #ffffff;
+  margin-left: rem(2);
+  transform: translate(-50%, -40%);
+
+  @include mq(md) {
+transition: all .3s ease-in 0s;
+  }
+}
+
+.pagenation .next-postslink:hover::after {
+  @include mq(md) {
+    border-color: transparent transparent transparent $black;
+  }
+}
+
+.pagenation .first,
+.pagenation .last,
+.pagenation .pages {
+  display: none;
+}
+
+
+
+/* ------------------------------
+  詳細
+------------------------------ */
+
+.back-list-wrap a,
+.previous-post a,
+.next-post a {
+  border-radius: rem(10);
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  font-family: $baseFont;
+  @include f_around(16, $bold, 23, false);
+  @include mq(md) {
+    transition: all .3s ease-in 0s;
+    min-height: rem(100);
+  }
+}
+
+.back-list-wrap a,
+.previous-post a,
+.next-post a {
+  background-color: $black;
+  color: $white;
+  position: relative;
+  @include mq(md) {
+    transition: all .3s ease-in 0s;
+  }
+}
+
+.previous-post a,
+.next-post a {
+  min-width: rem(335);
+  padding: rem(16) rem(20);
+  min-height: rem(97);
+  @include mq(md) {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.previous-post a .arrow,
+.next-post a .arrow {
+  @include f_around(12, $bold, 17.3, false);
+  display: inline-block;
+  padding-bottom: rem(10);
+  position: relative;
+  @include mq(md) {
+
+  }
+}
+
+.previous-post a:hover .arrow::before {
+  @include mq(md) {
+    border-color: transparent #000 transparent transparent;
+  }
+}
+
+.next-post a:hover .arrow::after {
+  @include mq(md) {
+    border-color: transparent transparent transparent #000;
+  }
+}
+
+.previous-post a .arrow::before,
+.next-post a .arrow::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  @include mq(md) {
+    transition: all .3s ease-in 0s;
+  }
+}
+
+.previous-post a .arrow::before {
+  border-width: rem(7) rem(12) rem(6) 0;
+  border-color: transparent #ffffff transparent transparent;
+  margin-right: rem(8);
+  @include mq(md) {
+
+  }
+}
+
+.next-post a .arrow::after {
+  border-width: rem(7) 0 rem(7) rem(12);
+  border-color: transparent transparent transparent #ffffff;
+  margin-left: rem(8);
+  @include mq(md) {
+
+  }
+}
+
+.previous-post a .title,
+.next-post a .title {
+  @include f_around(14, $bold, 20.3, false);
+  display: block;
+  overflow: hidden;
+  max-width: rem(306);
+  width: 100%;
+  padding-top: rem(10);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-top: 1px solid $white;
+  @include mq(md) {
+    max-width: rem(290);
+  }
+}
+
+.previous-post a {
+  text-align: center;
+  @include mq(md) {
+    text-align: left;
+  }
+}
+
+.next-post a {
+  text-align: center;
+  @include mq(md) {
+    text-align: right;
+  }
+}
+
+.back-list-wrap a {
+  text-align: center;
+  min-height: rem(63);
+  padding: rem(20) rem(18);
+  @include mq(md) {
+    width: rem(124);
+    min-height: rem(97);
+    padding: rem(36.5) rem(18);
+  }
+}
+
+.back-list-wrap a:hover,
+.previous-post a:hover,
+.next-post a:hover {
+  @include mq(md) {
+    background-color: $gray01;
+    color: $black;
+    opacity: 1;
+  }
+}
+
+span.extend {
+  padding: 0;
+  border: none;
+  @include mq(md) {
+    padding: rem(3) rem(12);
+  }
+}
+
+.pagenation span.extend {
+  display: none;
+  @include mq(md) {
+    // display: inline-block;
+    // color: $gray01;
+  }
+}
+
+//arrow
+.single-columnContent .previous-post a::before,
+.single-columnContent .next-post a::before {
+  display: inline-block;
+  content: "";
+  width: rem(8);
+  height: rem(8);
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  background-color: transparent;
+  border-top: 2px solid $gray01;
+  border-right: 2px solid $gray01;
+  @include mq(md) {
+    width: rem(10);
+    height: rem(10);
+    transition: all .3s ease-in 0s;
+  }
+}
+
+.previous-post a:hover::before,
+.next-post a:hover::before {
+  @include mq(md) {
+    border-top: 2px solid $white;
+    border-right: 2px solid $white;
+  }
+}
+
+.single-columnContent .previous-post a::before {
+  transform: translateY(-50%) rotate(-135deg);
+  left: rem(12);
+  @include mq(md) {
+    left: rem(20);
+  }
+}
+
+.single-columnContent .next-post a::before {
+  transform: translateY(-50%) rotate(45deg);
+  right: rem(12);
+  @include mq(md) {
+    right: rem(20);
+  }
+}

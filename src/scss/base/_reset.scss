@@ -15,25 +15,29 @@ button {
 }
 
 html {
+  // iOSで横向きにした時のフォントサイズ自動調節をオフにする
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 
-  word-break: normal;
-  line-break: strict;
-  overflow-wrap: anywhere;
+  // 文章の折り返し指定 see: https://ics.media/entry/240411/
+  word-break: normal; /* 単語の分割はデフォルトに依存 */
+  line-break: strict; /* 禁則処理を厳格に適用 */
+  overflow-wrap: anywhere; /* 収まらない場合に折り返す */
 
   tab-size: 4;
 
+  // 要素はみ出しによる横スクロールの発生を防止. (overflow は 継承プロパティではないので両方記述）
   overflow-x: clip;
 
+  // モーダルが開いている時はコンテンツをスクロールさせない
   &:has(:modal[open]) {
     overflow: hidden;
   }
 }
 
 body {
-  overflow: inherit;
-  min-height: 100vh;
+  overflow: inherit; // htmlから継承
+  min-height: 100vh; // bodyの高さ確保
 }
 
 ul,
@@ -55,12 +59,16 @@ audio,
 iframe,
 object,
 canvas {
+  // 隙間ができるのを防ぐ。( display はいじらない。)
   vertical-align: middle;
+
+  // 親要素をはみ出さないようにする
   max-inline-size: 100%;
 }
 
 img,
 video {
+  // img,video の縦横比を維持。（svg,iframe や audioは 高さがつぶれるので指定しない
   block-size: auto;
 }
 
@@ -69,22 +77,27 @@ iframe {
 }
 
 img {
+  // for iOS
   image-rendering: auto;
   width: 100%;
   height: auto;
 }
 
+//フォームリセット
 input,
 button,
 textarea,
 select,
 ::file-selector-button {
+  // 基本要素のフォントとカラーを本文から継承
   font: inherit;
   color: inherit;
+  // iOSで入力時の拡大を防ぐ. ( button には必要ないが、フォーム全体のフォントサイズを揃えるために一括で適用する )
   font-size: max(16px, 1em);
 }
 
 textarea {
+  // リサイズ方向を制限する
   resize: block;
   max-inline-size: 100%;
 }
@@ -127,3 +140,20 @@ button {
   border: none;
   background-color: transparent;
 }
+
+// focusを変更
+// a:focus,
+// button:focus {
+//   // outline: none;
+//   border: 2px solid rgb(255 105 0 / 1);
+//   border-radius: 5px;
+// };
+
+// input[type="checkbox"]:focus-visible+span,
+// input[type="radio"]:focus-visible+span,
+// input[type="text"]:focus-visible,
+// textarea:focus-visible,
+// input[type="submit"]:focus-visible,
+// input[type="reset"]:focus-visible {
+//   outline: solid 4px rgb(37 126 143 / 1);
+// }

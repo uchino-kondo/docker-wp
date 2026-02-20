@@ -1,1 +1,60 @@
-// btn-top
+@use "global/index" as *;
+
+.btn-top {
+  display: block;
+  width: rem(68);
+  height: rem(68);
+  position: fixed;
+  bottom: 8%;
+  right: rem(15);
+  z-index: $toTopBtn;
+  background-color: $black01;
+  border-radius: 50%;
+  @include f_around(12, $bold, 21, 75);
+  color: $white;
+  display: grid;
+  place-items: center;
+  border: rem(1) solid $black01;
+  padding-top: rem(10);
+  @include mq(md){
+    transition: background-color .3s, color .3s;
+    right: rem(80);
+    width: rem(90);
+    height: rem(90);
+    @include f_around(14, $bold, 24, 75);
+    padding-top: rem(12);
+  }
+}
+
+.btn-top::before {
+  content: "";
+  display: block;
+  width: rem(10);
+  height: rem(10);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-top: rem(2) solid $white;
+  border-right: rem(2) solid $white;
+  transform: translate(-50%, -150%) rotate(-45deg);
+  @include mq(md) {
+    width: rem(10);
+    height: rem(10);
+    transition: border-color .3s;
+    transform: translate(-50%, -180%) rotate(-45deg);
+  }
+}
+
+.btn-top:hover {
+  @include mq(md){
+    opacity: 1;
+    background-color: $white;
+    color: $black01;
+  }
+}
+
+.btn-top:hover::before {
+  @include mq(md){
+    border-color: $black01;
+  }
+}

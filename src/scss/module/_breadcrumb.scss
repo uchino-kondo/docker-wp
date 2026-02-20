@@ -1,1 +1,71 @@
-// breadcrumb
+@use "global/index" as *;
+
+.breadcrumb-list {
+  margin-top: rem(6);
+  @include mq(md){
+    margin-top: 0;
+    padding: rem(13) rem(20) rem(11);
+  }
+}
+
+main > .breadcrumb-list {
+  margin-top: rem(17);
+  @include mq(md) {
+    margin-top: rem(6);
+  }
+}
+
+.breadcrumb {
+  font-weight: $normal;
+  width: 100%;
+  display: flex;
+}
+
+.breadcrumb span {
+  font-size: rem(12);
+  color: $black;
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumb-arrow {
+  padding-right: rem(6);
+  padding-left: rem(6);
+  display: inline-block;
+  @include mq(md) {
+    padding-right: rem(6);
+    padding-left: rem(6);
+  }
+}
+
+.breadcrumb span:first-of-type {
+  padding-left: 0;
+}
+
+.breadcrumb a {
+  text-decoration: underline;
+  transition: all .3s ease-in 0s;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+  opacity: $opacity;
+}
+
+.breadcrumb .current-item {
+  color: $black;
+}
+
+.breadcrumbs span[property="name"] {
+  display: inline-block;
+  padding: 0;
+  margin-top: rem(-3);
+  vertical-align: middle;
+}
+
+.breadcrumb span.post.current-item {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}

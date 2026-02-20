@@ -15,6 +15,8 @@ html {
   // 768px~inner
 	@include mq(md) {
     font-size: min(calc(8px + 4*(100vw - 768px) / 598), 10px);
+        // 使用例 1100px~1366pxでは確認ずみ 程よく可変する
+    // font-size: min(calc(8px[rem(関数の場合のちょうどいい数字)] + 4*(100vw - 768px[レスポンシブ切り替えポイント]) / 598[インナー幅 - 768pxの数字]), 10px[rem(関数の場合)]);
 	}
 
   // inner~max-screen

@@ -1,1 +1,335 @@
-// footer
+@use "global/index" as *;
+
+.footer {
+  background-color: $black;
+  padding: rem(30) 0 rem(15);
+  margin-bottom: rem(57);
+  @include mq(md) {
+    overflow: hidden;
+    padding: rem(60) 0 rem(14);
+    margin-bottom: 0;
+  }
+}
+
+.knowledge + .footer {
+  margin-bottom: 0;
+}
+
+.footer__inner {
+  max-width: rem(480);
+  padding: 0 rem(20);
+  margin-right: auto;
+  margin-left: auto;
+  @include mq(md) {
+    max-width: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    margin-left: rem(40);
+  }
+}
+
+.footer__container {
+  @include mq(md) {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+.footer__info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: rem(360);
+  margin: 0 auto;
+  @include mq(md) {
+    flex-direction: column;
+    max-width: rem(177);
+    align-items: flex-start;
+  }
+}
+
+.footer__logo {
+  width: 42%;
+  @include mq(md) {
+    width: 100%;
+    max-width: rem(140);
+  }
+}
+
+.footer__logo a {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.footer__logo img {
+  aspect-ratio: 139/100;
+  object-fit: cover;
+}
+
+.footer__addr {
+  width: 50%;
+  color: $white;
+  margin-right: 0;
+  margin-left: rem(20);
+  @include f_around(12, $normal, 20, false);
+  @include mq(md) {
+    width: 100%;
+    margin-top: rem(30);
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
+
+.footer__nav {
+  display: flex;
+  margin-top: rem(60);
+  @media screen and (min-width: 385px)  {
+    justify-content: center;
+  }
+  @include mq(md) {
+    margin-top: 0;
+    margin-left: rem(20);
+  }
+  @include mq(lg) {
+    margin-left: rem(40);
+  }
+  @include mq(xxl) {
+    margin-left: rem(80);
+  }
+}
+
+.footer__navItem:first-of-type {
+  width: 63%;
+  @include mq(md) {
+    width: rem(210);
+  }
+  @include mq(xl) {
+    width: rem(240);
+  }
+}
+
+.footer__navItem:nth-of-type(2) {
+  width: 37%;
+  @include mq(md) {
+    margin-left: rem(20);
+    width: rem(160);
+  }
+  @include mq(xxl) {
+    margin-left: rem(50);
+    width: rem(180);
+  }
+}
+
+.footer__linkChild,
+.footer__linkChild + .footer__link,
+.footer__link + .footer__link {
+  margin-top: rem(20);
+}
+
+.footer__link span,
+.footer__link a {
+  display: block;
+  color: $white;
+  @include f_around(16, $bold, 16, false);
+  line-height: 1;
+  @include mq(md) {
+    position: relative;
+    display: inline-block;
+  }
+}
+
+.footer__linkItem a::after,
+.footer__link a::after {
+  @include mq(md) {
+    content: "";
+    display: block;
+    width: 100%;
+    height: rem(2);
+    position: absolute;
+    bottom: rem(-10);
+    left: 0;
+    transform: scale(0, 1);
+    transform-origin: left top;
+    background-color: $white;
+    transition: all .3s;
+  }
+}
+
+.footer__linkItem a:hover,
+.footer__link a:hover {
+  @include mq(md) {
+    opacity: 1;
+  }
+}
+
+.footer__linkItem a:hover::after,
+.footer__link a:hover::after {
+  @include mq(md) {
+    transform: scale(1, 1);
+  }
+}
+
+.footer__linkChild {
+  border-left: 1px solid $white;
+  padding-left: rem(10);
+  @include mq(md) {
+    padding-left: rem(8);
+  }
+  @include mq(lg) {
+    padding-left: rem(10);
+  }
+}
+
+.footer__linkItem {
+  line-height: 1;
+  @include mq(md) {
+  }
+}
+
+.footer__linkItem + .footer__linkItem {
+  margin-top: rem(14);
+  @include mq(md) {
+  }
+}
+
+.footer__linkItem a {
+  display: block;
+  color: $white;
+  @include f_around(12, $normal, 12, false);
+  @include mq(md) {
+    @include f_around(14, $normal, 18, false);
+    display: inline-block;
+    position: relative;
+  }
+  @include mq(xxl) {
+    @include f_around(14, $normal, 14, false);
+  }
+}
+
+.footer__btns {
+  margin-top: rem(60);
+  text-align: center;
+  @include mq(md) {
+    display: flex;
+    margin-top: 0;
+    background-color: $white;
+    border-top-left-radius: rem(10);
+    border-bottom-left-radius: rem(10);
+    height: rem(58);
+  }
+}
+
+.footer__btn {
+  @include mq(md) {
+    display: inline-block;
+    margin-left: 0;
+  }
+}
+
+.footer__btn + .footer__btn {
+  margin-top: rem(15);
+  @include mq(md) {
+    margin-top: 0;
+    border-left: 1px solid $black;
+  }
+}
+
+.footer__btn a {
+  width: rem(335);
+  @include mq(md) {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+.footer__btn .btn {
+  @include mq(md) {
+    border: none;
+    padding: rem(20) rem(20);
+  }
+  @include mq(xl) {
+    padding: rem(20) rem(35);
+  }
+}
+
+.footer__btn  {
+  @include mq(md) {
+    border-left: 1px solid $black;
+  }
+}
+
+.footer__btn:first-child a {
+  @include mq(md) {
+    border-top-left-radius: rem(10);
+    border-bottom-left-radius: rem(10);
+  }
+}
+
+.footer__copy {
+  color: $white;
+  @include f_around(10, $normal, 13.6, false);
+  text-align: center;
+  margin-top: rem(60);
+  @include mq(md) {
+    margin-top: rem(120);
+  }
+}
+
+// 追従CTA
+.footer__cta {
+  width: 100%;
+}
+
+.toContact,
+.toDocument {
+  text-align: center;
+  @include f_around(14, $bold, 14, false);
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  padding: rem(20) rem(20);
+  width: 50%;
+  @include mq(md) {
+
+  }
+}
+
+// toDocument
+.toDocument {
+  left: 0;
+  color: $black;
+  background-color: $white;
+  border-top: rem(3) solid $black;
+  @include mq(md) {
+    display: none;
+  }
+}
+
+// toContadt
+.toContact {
+  right: 0;
+  color: $white;
+  background-color: $black;
+  border-top: rem(3) solid $white;
+  @include mq(md) {
+    font-size: rem(21);
+    transition: all .3s ease-in 0s;
+    width: 100%;
+    max-width: rem(300);
+    border-top-left-radius: rem(10);
+    border-left: rem(3) solid $white;
+    padding: rem(28) rem(20);
+  }
+}
+.toContact:hover {
+  @include mq(md) {
+    color: $black;
+    background-color: $gray01;
+    border-top: rem(3) solid $gray01;
+    border-left: rem(3) solid $gray01;
+    opacity: 1;
+  }
+}

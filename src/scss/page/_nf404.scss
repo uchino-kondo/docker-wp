@@ -1,1 +1,77 @@
-// 404
+@use "global/index"as *;
+
+.nf404 {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nf404__inner {
+  padding-top: rem(50);
+  @include mq(md) {
+    padding-top: rem(80);
+  }
+}
+
+.nf404__text {
+  font-size: rem(20);
+  font-weight: $bold;
+  @include mq(md) {
+    font-size: rem(32);
+  }
+}
+
+.nf404__text .title {
+  font-size: rem(20);
+  color: $black;
+  margin-top: rem(24);
+  font-family: $baseFont;
+  font-weight: $bold;
+  position: relative;
+  @include mq(md) {
+    font-size: rem(32);
+    margin-top: rem(64);
+  }
+}
+
+.nf404__text .sub1,
+.nf404__text .sub2 {
+  color: rgba($gray01, 0.6);
+  letter-spacing: .02em;
+  line-height: 1.0;
+  text-transform: capitalize;
+  display: block;
+  @include mq(md) {
+
+  }
+}
+
+.nf404__text .sub2 {
+  font-size: rem(48);
+  @include mq(md) {
+    font-size: rem(88);
+  }
+}
+
+.nf404__text .sub1 {
+  font-size: rem(36);
+  @include mq(md) {
+    font-size: rem(64);
+  }
+}
+
+.nf404__btn {
+  margin-top: rem(40);
+  @include mq(md) {
+    margin-top: rem(60);
+  }
+}
+
+.nf404__conversion-banner {
+  margin-top: rem(50);
+  @include mq(md) {
+    margin-top: rem(60);
+  }
+}

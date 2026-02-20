@@ -1,1 +1,92 @@
-// card
+@use "global/index" as *;
+
+.card {
+  background-color: $white;
+}
+
+.card__link {
+  display: flex;
+  flex-direction: column;
+  gap: rem(4);
+  padding: rem(18);
+  padding-bottom: rem(20);
+  @include mq(md) {
+    padding-bottom: rem(30);
+    transition: box-shadow .3s;
+  }
+}
+
+.card__link:hover {
+  @include mq(md) {
+    box-shadow: rem(2) rem(4) rem(6) rgba($gray01, 0.5);
+    opacity: 1;
+  }
+}
+
+.card__thumb {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.card__thumb img {
+  aspect-ratio: 272/182;
+  object-fit: cover;
+  height: 100%;
+  @include mq(md) {
+    aspect-ratio: 320/214;
+    transition: transform .3s;
+  }
+}
+
+.card__link:hover .card__thumb img {
+  @include mq(md) {
+    transform: scale(1.03);
+  }
+}
+
+.card__info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: rem(8);
+  margin-top: rem(4);
+  @include mq(md) {
+    column-gap: rem(19);
+    margin-top: rem(8);
+  }
+}
+
+.card__info .time {
+  @include f_around(12, $normal, 12, 50);
+  color: $gray02;
+}
+
+.card__info .cat {
+  @include f_around(12, $medium, 12, 100);
+  color: $gray02;
+  border: 1px solid $gray01;
+  padding: rem(2) rem(4);
+}
+
+.card__info .badge {
+  @include f_around(11, $medium, 11, 50);
+  color: $gray02;
+  text-transform: uppercase;
+}
+
+.card__title {
+  margin-top: rem(4);
+  @include f_around(14, $normal, 21, 50);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  min-height: rem(45);
+  @include mq(md) {
+    margin-top: rem(8);
+    @include f_around(15, $normal, 24, 50);
+    -webkit-line-clamp: 2;
+    min-height: rem(48);
+  }
+}

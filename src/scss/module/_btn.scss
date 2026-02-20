@@ -1,1 +1,89 @@
-// btn
+@use "global/index" as *;
+
+.btn {
+  @include f_around(16, $bold, 16, 83);
+  display: inline-block;
+  text-align: center;
+  border: rem(3) solid $black;
+  border-radius: rem(10);
+  padding: rem(20);
+  // テキストをトリムして、大文字に変換して、アルファベットの位置に配置する
+  text-box: trim-both cap alphabetic;
+  @include mq(md) {
+    transition: color, background-color .3S ease-in;
+  }
+}
+
+.btn._black {
+  color: $white;
+  background-color: $black;
+}
+
+.btn._white {
+  color: $black;
+  background-color: $white;
+  border-color: $black;
+}
+
+.btn:hover {
+  @include mq(md) {
+    color: $black;
+    background-color: $gray01;
+    border-color: transparent;
+    opacity: 1;
+  }
+}
+
+.btn._w124 {
+  width: rem(124);
+}
+
+.btn._w140 {
+  width: rem(140);
+}
+
+.btn._w208 {
+  width: rem(335);
+  @include mq(md) {
+    width: rem(208);
+  }
+}
+
+.btn._w225 {
+  width: rem(225);
+}
+
+.btn._w300 {
+  max-width: rem(300);
+  width: 100%;
+}
+
+.btn._w190 {
+  width: rem(335);
+  @include mq(md) {
+    width: rem(190);
+  }
+}
+
+.btn._w260 {
+  max-width: rem(335);
+  width: 100%;
+  @include mq(md) {
+    width: rem(260);
+  }
+}
+
+.mv__btn {
+  .btn._w190 {
+    width: rem(295);
+    @include mq(md) {
+      width: rem(190);
+    }
+  }
+  .btn._w260 {
+    width: rem(295);
+    @include mq(md) {
+      width: rem(260);
+    }
+  }
+}

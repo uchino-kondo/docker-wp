@@ -1,0 +1,14 @@
+@use "global/index" as *;
+
+.mt {
+  margin-top: 1000px;
+}
+.background {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      #ccc, #ccc 5px,
+      rgba(0 0 0 / 0)0,
+      rgba(0 0 0 / 0)10px,
+    );
+}

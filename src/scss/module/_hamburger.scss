@@ -1,1 +1,59 @@
-// hamburger
+@use "global/index" as *;
+
+.hamburger {
+  width: rem(45);
+  height: rem(45);
+  transition: all .3s ease-in 0s;
+  padding: 0;
+  z-index: $hamBtn;
+  border-radius: rem(8);
+  position: relative;
+  background-color: $black;
+  margin-top: rem(3);
+  @include mq(md){
+    display: none;
+  }
+}
+
+.bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: rem(25);
+  height: rem(2);
+  background-color: $white;
+  transition-property: transform;
+  transition-duration: .3s;
+  transition-timing-function: cubic-bezier(.165, .84, .44, 1);
+  backface-visibility: hidden
+}
+
+.bar:nth-of-type(2) {
+  margin-top: rem(-9);
+}
+
+.bar:nth-of-type(3) {
+  margin-top: rem(9);
+}
+
+.hamburger.js-active {
+  background-color: #3d4042;
+}
+
+.hamburger.js-active .bar {
+  margin-top: 0;
+}
+
+.hamburger.js-active .bar:nth-of-type(1){
+  width: rem(0);
+}
+
+.hamburger.js-active .bar:nth-of-type(2){
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.hamburger.js-active .bar:nth-of-type(3){
+  transform:  translate(-50%, -50%) rotate(-45deg);
+}
