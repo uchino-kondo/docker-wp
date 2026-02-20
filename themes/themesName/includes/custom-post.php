@@ -2,28 +2,28 @@
 function create_post_type_and_taxonomy() {
 
   // News投稿タイプの追加
-  register_post_type('news',
+  register_post_type('column',
     array(
       'labels' => array(
-        'name' => __('News一覧'),
-        'singular_name' => __('News')
+        'name' => __('コラム一覧'),
+        'singular_name' => __('コラム')
       ),
       'public' => true,
       'has_archive' => true,
       'menu_icon' => 'dashicons-media-text',
-      'rewrite' => array('slug' => 'news'),
+      'rewrite' => array('slug' => 'column'),
       'supports' => array('title', 'editor', 'thumbnail'),
       'show_in_rest' => true,
     )
   );
 
-  // カスタムタクソノミー('news-cat')の追加
+  // カスタムタクソノミー('column-cat')の追加
   register_taxonomy(
-    'news-cat',
-    'news',
+    'column-cat',
+    'column',
     array(
-      'label' => __('Newsカテゴリ'),
-      'rewrite' => array('slug' => 'news-cat'),
+      'label' => __('コラムカテゴリ'),
+      'rewrite' => array('slug' => 'column-cat'),
       'hierarchical' => true,
       'show_ui' => true,
       'show_in_rest' => true,
@@ -34,19 +34,19 @@ add_action('init', 'create_post_type_and_taxonomy');
 
 
 
-// news-itemのデフォルトカテゴリーを設定
-function set_default_category_for_news($post_id, $post, $update) {
+// column-itemのデフォルトカテゴリーを設定
+function set_default_category_for_column($post_id, $post, $update) {
   if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
     return;
   }
 
-  if ($post->post_type == 'news') {
-    $default_category_id = get_term_by('slug', 'news-item', 'news-cat');
+  if ($post->post_type == 'column') {
+    $default_category_id = get_term_by('slug', 'column-item', 'column-cat');
     if ($default_category_id) {
-      wp_set_object_terms($post_id, array($default_category_id->term_id), 'news-cat', false);
+      wp_set_object_terms($post_id, array($default_category_id->term_id), 'column-cat', false);
     }
   }
 }
-add_action('save_post', 'set_default_category_for_news', 10, 3);
+add_action('save_post', 'set_default_category_for_column', 10, 3);
 
 ?>
