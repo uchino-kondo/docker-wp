@@ -113,6 +113,30 @@ npm run img
 npm run stop
 ```
 
+### Git でクローンしたとき
+
+**前提:** Git はインストール済みであること。GitHub に SSH 鍵を登録済みであること。
+
+1. **project フォルダにクローンする**
+
+```bash
+cd ~/MyDocumet/project
+git clone git@github.com:uchino-kondo/docker-wp.git
+cd docker-wp
+```
+
+2. **フォルダ名を変更して管理する（任意）**
+
+クローン直後は `docker-wp` というフォルダ名になる。案件ごとに分けたい場合はリネームしてよい。
+
+```bash
+# 例: 案件名のフォルダにしたい場合
+mv docker-wp 20260301_clientname
+cd 20260301_clientname
+```
+
+3. **このあと** → [初回セットアップ](#初回セットアップ) の「パッケージインストール」から進める。
+
 ---
 
 ## コマンド一覧
